@@ -24,6 +24,7 @@
     "universal-rxjs-ajax": "^2.0.4"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^1.13.3",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.3",
