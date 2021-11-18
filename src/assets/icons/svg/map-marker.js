@@ -1,9 +1,7 @@
-// <!-- <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-// <svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="24" width="24" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
-
-// </svg> -->
 
 import React from 'react'
+import PropTypes from 'prop-types'
+
 export default function MapMarker ({ onClick }) {
   return (
     <svg onClick={onClick} className="svgIcon-use" width="40" height="50" viewBox="0 0 25 25">
@@ -13,4 +11,8 @@ export default function MapMarker ({ onClick }) {
       </g>
     </svg>
   )
+}
+
+MapMarker.propTypes = {
+  onClick: PropTypes.object.func
 }
