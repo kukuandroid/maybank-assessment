@@ -1,26 +1,24 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import GoogleMapReact from 'google-map-react'
-import MarkerIcon from '@mui/icons-material/Room'
 import useGetCoordinates from '../hooks/geolocation'
+import MapMarker from '../assets/icons/svg/map-marker'
+
+// const MapMarker = <Image src="" height={30} width={30} />
 
 const Maps = () => {
   const coords = useGetCoordinates()
   return (
     <Container>
-
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.google_maps_api_key }}
         center={coords}
         defaultZoom={12}
         yesIWantToUseGoogleMapApiInternals
       >
-        <MarkerIcon
-          fontSize={'large'}
-          lat={coords.lat}
-          lng={coords.lng}
+        <MapMarker onClick={() => alert('sds')} lat={coords.lat}
           text="My Marker"
-        />
+          lng={coords.lng} />
       </GoogleMapReact>
     </Container>
   )
