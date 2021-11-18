@@ -1,24 +1,30 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import GoogleMapReact from 'google-map-react'
 import useGetCoordinates from '../hooks/geolocation'
 import MapMarker from '../assets/icons/svg/map-marker'
+import { useSelector } from 'react-redux'
 
 // const MapMarker = <Image src="" height={30} width={30} />
 
 const Maps = () => {
-  const coords = useGetCoordinates()
+  const baseCoords = useGetCoordinates()
+  const { coords = [] } = useSelector(state => state.coords)
+
+  const coordsChanged = coords.length > 0
+
   return (
     <Container>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.google_maps_api_key }}
-        center={coords}
+        center={coordsChanged ? coords[0].geometry.location : baseCoords}
         defaultZoom={12}
         yesIWantToUseGoogleMapApiInternals
       >
-        <MapMarker onClick={() => alert('sds')} lat={coords.lat}
+        <MapMarker onClick={() => alert('sds')} lat={coordsChanged ? coords[0].geometry.location.lat : baseCoords.lat}
           text="My Marker"
-          lng={coords.lng} />
+          lng={coordsChanged ? coords[0].geometry.location.lng : baseCoords.lng}
+          />
       </GoogleMapReact>
     </Container>
   )
