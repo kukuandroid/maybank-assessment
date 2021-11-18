@@ -4,9 +4,9 @@ import { ofType } from 'redux-observable'
 // import { request } from 'universal-rxjs-ajax' // because standard AjaxObservable only works in browser
 import { ajax } from 'rxjs/ajax'
 
-import * as actions from '../../actions/google-maps'
-import * as types from '../../types/google-maps'
-import { googleMapsApiUrl, proxyUrl } from '../../../config'
+import * as actions from '../../actions/google-maps/places-action'
+import * as types from '../../types/google-maps/places-type'
+import { gmapPlacesAutoCompleteUrl, proxyUrl } from '../../../config'
 
 export const fetchPlaceEpic = (action$, state$) =>
   action$.pipe(
@@ -21,13 +21,12 @@ export const fetchPlaceEpic = (action$, state$) =>
     })
   )
 
-// maps
 export const fetchPlacesEpic = (action$, state) => {
   return action$.pipe(
     ofType(types.FETCH_PLACES),
     tap(value => console.log('Gonna fetch', value)),
     mergeMap(action =>
-      ajax.getJSON(`${proxyUrl}/${googleMapsApiUrl}input=${action.payload.searchTerm}&types=geocode&key=${process.env.google_maps_api_key}`).pipe(
+      ajax.getJSON(`${proxyUrl}/${gmapPlacesAutoCompleteUrl}input=${action.payload.searchTerm}&types=geocode&key=${process.env.google_maps_api_key}`).pipe(
         tap(value => console.log(value)),
         map(res => actions.fetchPlacesSuccess(res.predictions)),
         takeUntil(

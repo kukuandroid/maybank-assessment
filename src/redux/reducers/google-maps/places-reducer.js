@@ -1,4 +1,4 @@
-import * as types from '../../types/google-maps'
+import * as types from '../../types/google-maps/places-type'
 
 const INITIAL_STATE = {
   search_term: 'ipoh',
@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   error: null
 }
 
-export default function placeSearch (state = INITIAL_STATE, { type, payload }) {
+export default function placesReducer (state = INITIAL_STATE, { type, payload }) {
   switch (type) {
     case types.FETCH_PLACES_SUCCESS:
       return {

@@ -1,11 +1,13 @@
 import * as types from '../../types/google-maps'
 
-export const startFetchingPlaces = () => ({
-  type: types.START_FETCHING_PLACESS
-})
-export const stopFetchingPlaces = () => ({
-  type: types.STOP_FETCHING_PLACESS
-})
+// fetch places
+// export const startFetchingPlaces = () => ({
+//   type: types.START_FETCHING_PLACESS
+// })
+// export const stopFetchingPlaces = () => ({
+//   type: types.STOP_FETCHING_PLACESS
+// })
+
 export const fetchPlaces = (searchTerm) => ({
   type: types.FETCH_PLACES,
   payload: { searchTerm }
@@ -17,5 +19,21 @@ export const fetchPlacesSuccess = (response) => ({
 
 export const fetchPlacesFailure = (error, places) => ({
   type: types.FETCH_PLACES_FAILURE,
+  payload: { error, places }
+})
+
+// fetch
+
+export const fetchCoords = (address) => ({
+  type: types.FETCH_COORDS,
+  payload: { address }
+})
+export const fetchCoordsSuccess = (coords) => ({
+  type: types.FETCH_COORDS_SUCCESS,
+  payload: { coords }
+})
+
+export const fetchCoordsFailure = (error, places) => ({
+  type: types.FETCH_COORDS_FAILURE,
   payload: { error, places }
 })
