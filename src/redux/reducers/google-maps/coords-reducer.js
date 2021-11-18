@@ -2,7 +2,8 @@ import * as types from '../../types/google-maps/coords-type'
 
 const INITIAL_STATE = {
   address: 'malaysia',
-  error: null
+  error: null,
+  coords: []
 }
 
 export default function coordsReducer (state = INITIAL_STATE, { type, payload }) {
@@ -10,7 +11,7 @@ export default function coordsReducer (state = INITIAL_STATE, { type, payload })
     case types.FETCH_COORDS_SUCCESS:
       return {
         ...state,
-        coords: payload.response
+        coords: payload.coords
       }
     case types.FETCH_COORDS_FAILURE:
       return {
