@@ -13,6 +13,9 @@ const Maps = () => {
 
   const coordsChanged = coords.length > 0
 
+  const onMapClick = () => {
+
+  }
   return (
     <Container>
       <GoogleMapReact
@@ -21,10 +24,10 @@ const Maps = () => {
         defaultZoom={12}
         yesIWantToUseGoogleMapApiInternals
       >
-        <MapMarker onClick={() => alert('sds')} lat={coordsChanged ? coords[0].geometry.location.lat : baseCoords.lat}
+        <MapMarker onClick={onMapClick} lat={coordsChanged ? coords[0].geometry.location.lat : baseCoords.lat}
           text="My Marker"
           lng={coordsChanged ? coords[0].geometry.location.lng : baseCoords.lng}
-          />
+        />
       </GoogleMapReact>
     </Container>
   )
