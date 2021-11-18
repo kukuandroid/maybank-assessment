@@ -1,7 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
 import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
+import PropTypes from 'prop-types'
 
 const Input = ({ type, placeholder }) => {
   return (
